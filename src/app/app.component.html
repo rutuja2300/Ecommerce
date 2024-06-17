@@ -1,0 +1,11 @@
+<app-navbar (showHome)="showHome()" (showCart)="showCart()"></app-navbar>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12" *ngIf="currentView === 'home'">
+      <app-product-list (addToCart)="addToCart($event)"></app-product-list>
+    </div>
+    <div class="col-md-12" *ngIf="currentView === 'cart'">
+      <app-shopping-cart [cart]="cart" (removeFromCart)="removeFromCart($event)" (updateCart)="updateCart($event.id, $event.quantity)"></app-shopping-cart>
+    </div>
+  </div>
+</div>

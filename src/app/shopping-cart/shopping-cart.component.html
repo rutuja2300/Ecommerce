@@ -1,0 +1,12 @@
+<div *ngIf="cart.length > 0">
+  <div *ngFor="let product of cart" class="mb-3">
+    <h5>{{ product.name }}</h5>
+    <p>Price: {{ product.cost | currency:'USD' }}</p>
+    <input type="number" [(ngModel)]="product.quantity" (ngModelChange)="onUpdateCart(product.id, product.quantity)" class="form-control mb-2" />
+    <button class="btn btn-danger" (click)="onRemoveFromCart(product.id)">Remove</button>
+  </div>
+  <h5>Total: {{ getTotal() | currency:'USD' }}</h5>
+</div>
+<div *ngIf="cart.length === 0">
+  <p>Your cart is empty.</p>
+</div>

@@ -1,0 +1,39 @@
+<div class="mb-3">
+  <div class="form-inline">
+    <label class="mr-2">Sort by:</label>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="sortOptions" id="sortPrice" (change)="sortProducts('price')">
+      <label class="form-check-label" for="sortPrice">Price</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="sortOptions" id="sortRating" (change)="sortProducts('rating')">
+      <label class="form-check-label" for="sortRating">Rating</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="sortOptions" id="sortDiscount" (change)="sortProducts('discount')">
+      <label class="form-check-label" for="sortDiscount">Discount</label>
+    </div>
+  </div>
+</div>
+
+<div class="mb-3">
+  <label>Filter by category:</label>
+  <select class="form-control" (change)="filterProducts($event)">
+    <option value="all">All</option>
+    <option value="Category 1">Category 1</option>
+    <option value="Category 2">Category 2</option>
+    <option value="Category 3">Category 3</option>
+  </select>
+</div>
+
+<div class="list-group">
+  <div *ngFor="let product of filteredProducts" class="list-group-item">
+    <h5>{{ product.name }}</h5>
+    <p>Price: {{ product.cost | currency:'USD' }}</p>
+    <p>Brand: {{ product.brand }}</p>
+    <p>Category: {{ product.category }}</p>
+    <p>Rating: {{ product.rating }}</p>
+    <p>Discount: {{ product.discount }}%</p>
+    <button class="btn btn-primary" (click)="onAddToCart(product)">Add to Cart</button>
+  </div>
+</div>
